@@ -9,25 +9,29 @@ import {
 } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 
 export function SignIn() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const {status,token} = useSelector((state)=>state.auth)
   const {register,handleSubmit,formState:{errors}} = useForm()
+
   const handleLoginIn = async(data)=>{
      try {
-     await dispatch(loginUser(data))
-          localStorage.setItem("token",token)                    // after suucessfull login setItem token in localStorage; response.data.token from response.data and token from backend
-          toast.success("Admin loggedIn successfully")
-          navigate("/dashboard/home")
-
+      const resultAction = await dispatch(loginUser(data));
+      
+      if (resultAction.token) { 
+        localStorage.setItem("token", resultAction.token);
+        toast.success("Admin logged in successfully");
+        navigate("/dashboard/home");
+      } else {
+        toast.error("Invalid credentials");
+      }
     } catch (error) {
       console.error(error);
-       toast.error(error?.response?.data?.message || "Failed to log in. Please try again!");
+      toast.error(error?.response?.data?.message || "Failed to log in. Please try again!");
     }
     
   }
