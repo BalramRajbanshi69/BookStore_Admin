@@ -21,13 +21,10 @@ export function SignIn() {
   const handleLoginIn = async(data)=>{
      try {
      await dispatch(loginUser(data))
-      if(status === STATUSES.SUCCESS && token){
           localStorage.setItem("token",token)                    // after suucessfull login setItem token in localStorage; response.data.token from response.data and token from backend
           toast.success("Admin loggedIn successfully")
           navigate("/dashboard/home")
-            } else if(status === STATUSES.ERROR){
-              toast.error("Invalid credentials")
-            }
+
     } catch (error) {
       console.error(error);
        toast.error(error?.response?.data?.message || "Failed to log in. Please try again!");
