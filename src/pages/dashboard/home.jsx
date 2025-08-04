@@ -27,7 +27,7 @@ import {
 } from "@/data";
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllData } from "@/store/AllDataSlice";
+import { fetchAllData } from "@/store/allDataSlice";
 
 export function Home() {
   const dispatch = useDispatch()
