@@ -19,8 +19,8 @@ const totalRevenue = data?.allOrders?.reduce((sum, order) => sum + (order.totalA
       value: data?.books || "0",
       footer: {
         color: "text-green-500",
-        value: "+55%",
-        label: "than last week",
+        value: data?.books || "0",
+        label: "Number of books available",
       },
     },
     {
@@ -30,8 +30,8 @@ const totalRevenue = data?.allOrders?.reduce((sum, order) => sum + (order.totalA
       value: data?.users || "0",
       footer: {
         color: "text-green-500",
-        value: "+3%",
-        label: "than last month",
+        value: data?.users || "0",
+        label: "Number of users available",
       },
     },
     {
@@ -41,8 +41,8 @@ const totalRevenue = data?.allOrders?.reduce((sum, order) => sum + (order.totalA
       value: data?.orders || "0",
       footer: {
         color: "text-red-500",
-        value: "-2%",
-        label: "than yesterday",
+        value: data?.orders || "0",
+        label: "Number of orders available ",
       },
     },
     {
@@ -52,8 +52,8 @@ const totalRevenue = data?.allOrders?.reduce((sum, order) => sum + (order.totalA
       value: `${totalRevenue.toFixed(2)|| 0}`, 
       footer: {
         color: "text-green-500",
-        value: "+5%",
-        label: "than yesterday",
+        value: `NPR: ${totalRevenue.toFixed(2)|| 0}`,
+        label: "GrandAmount ",
       },
     },
   ];

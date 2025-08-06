@@ -43,7 +43,6 @@ export function loginUser(data){
         dispatch(setStatus(STATUSES.LOADING))
         try {
             const response = await API.post("/auth/login",data)
-            console.log(response.data);
             
              dispatch(setUser(response.data.data));               // set user data for login 
             dispatch(setToken(response.data.token));               // here see the backend login route code token is saved in token:token so response.data.token   && if data:token then response.data.token

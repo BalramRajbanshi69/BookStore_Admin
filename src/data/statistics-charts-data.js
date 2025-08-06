@@ -107,23 +107,23 @@ const completedTasksChart = {
 export const statisticsChartsData = [
   {
     color: "white",
-    title: "Website View",
-    description: "Last Campaign Performance",
-    footer: "campaign sent 2 days ago",
+    title: "Books Website View",
+    description: "Books Available Performance",
+    footer: "books added,deleted,updated",
     chart: websiteViewsChart,
   },
   {
     color: "white",
-    title: "Daily Sales",
-    description: "15% increase in today sales",
+    title: "Daily Users Chart Data",
+    description: "15% increase in today users daily",
     footer: "updated 4 min ago",
     chart: dailySalesChart,
   },
   {
     color: "white",
-    title: "Completed Tasks",
-    description: "Last Campaign Performance",
-    footer: "just updated",
+    title: "Completed Orders Tasks",
+    description: "Total numbers of orders ordered",
+    footer: "just ordered orders updated",
     chart: completedTasksChart,
   },
 ];

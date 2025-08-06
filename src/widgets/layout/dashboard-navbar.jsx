@@ -25,6 +25,8 @@ import {
   setOpenConfigurator,
   setOpenSidenav,
 } from "@/context";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchTerm } from "@/store/userSlice";
 
 export function DashboardNavbar() {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -32,6 +34,12 @@ export function DashboardNavbar() {
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
 
+  // users search
+  const searchDispatch = useDispatch()
+  const {searchTerm} = useSelector((state)=>state.users)
+  const handleSearchChange = (e)=>{
+    searchDispatch(setSearchTerm(e.target.value))
+  }
   return (
     <Navbar
       color={fixedNavbar ? "white" : "transparent"}
@@ -73,7 +81,7 @@ export function DashboardNavbar() {
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="Search" />
+            <Input label="Search" type="text" value={searchTerm} onChange={handleSearchChange} />
           </div>
           <IconButton
             variant="text"
