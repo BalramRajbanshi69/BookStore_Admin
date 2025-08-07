@@ -7,7 +7,7 @@ import {
 } from "@material-tailwind/react";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBooks, updateBooksStatus, updateStockAndPrice } from '@/store/bookSlice';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import s1 from "../../../img/BookTitleLogo.jpg"
 import { APIAuthenticated } from '@/http';
@@ -15,6 +15,7 @@ import { APIAuthenticated } from '@/http';
 const SingleBook = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const {books} = useSelector((state)=>state.books)
 
     
@@ -163,67 +164,74 @@ const SingleBook = () => {
         </div>
 
         <div className="flex w-full flex-col items-start justify-start space-y-4 md:space-y-6 xl:space-y-8">
-            <div className="flex w-full flex-col items-start justify-start bg-gray-50 px-4 py-4 dark:bg-gray-800 md:p-6 md:py-6 xl:p-8">
-              <p className="text-lg font-semibold leading-6 text-gray-800 underline underline-offset-4 dark:text-white md:text-xl xl:leading-5">
-              Orders
-              </p>
+  <div className="flex w-full flex-col items-start justify-start bg-gray-50 px-4 py-4 dark:bg-gray-800 md:p-6 md:py-6 xl:p-8">
+    <p className="text-lg font-semibold leading-6 text-gray-800 underline underline-offset-4 dark:text-white md:text-xl xl:leading-5">
+      Orders
+    </p>
 
-              <div className="inline-block min-w-full shadow rounded-lg overflow-hidden mt-4">
-               <table className="min-w-full leading-normal">
-                <thead>
-                  <tr>
-                    <th className="px-5 py-3 bproduct-b-2 bproduct-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      OrderId
-                    </th>
-                    <th className="px-5 py-3 bproduct-b-2 bproduct-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      OrderStatus
-                    </th>
-                    <th className="px-5 py-3 bproduct-b-2 bproduct-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      Phone
-                    </th>
-                    <th className="px-5 py-3 bproduct-b-2 bproduct-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      Shipping Addresss
-                    </th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  {orders &&
-                    orders.length > 0 &&
-                    orders.map((order,index) => (
-                      <tr key={order._id}>
-                        <td className="px-5 py-5 bproduct-b bproduct-gray-200 bg-white text-sm">
-                          <p className="text-[#540b0e] whitespace-no-wrap font-bold hover:cursor-pointer hover:underline" >
-                            {order._id}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 bproduct-b bproduct-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap font-semibold">
-                            {order.orderStatus}
-                          </p>
-                        </td>
+    <div className="inline-block min-w-full shadow rounded-lg overflow-hidden mt-4">
+      <table className="min-w-full leading-normal">
+        <thead>
+          <tr>
+            <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              OrderId
+            </th>
+            <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              OrderStatus
+            </th>
+            <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              Phone
+            </th>
+            <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              Shipping Addresss
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders &&
+            orders.length > 0 &&
+            orders.map((order, index) => (
+              <tr key={order._id}>
+                {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p className="text-[#540b0e] whitespace-no-wrap font-bold hover:cursor-pointer hover:underline">
+                    {order._id}
+                  </p>
+                </td> */}
 
-                        <td className="px-5 py-5 bproduct-b bproduct-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap font-semibold">
-                            {order.phoneNumber}
-                          </p>
-                        </td>
-                         <td className="px-5 py-5 bproduct-b bproduct-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap font-semibold">
-                            {order.shippingAddress}
-                          </p>
-                        </td>
-                        
-                       
-                      </tr>
-                    ))}
-                </tbody>
-              </table> 
-             
-            </div>
+               <td
+  className="py-4 px-4 border-b border-gray-200  truncate cursor-pointer relative overflow-hidden group"
+  onClick={() => navigate(`/dashboard/orders/${order?._id}`)}
+>
+  <span className="relative inline-block font-semibold">
+    {order?._id}
+    <span 
+      className="absolute w-full bottom-[-2px] left-0 h-[1.5px] bg-gray-900 transform scale-x-0 transition-transform duration-500 ease-in-out  group-hover:scale-x-100"
+    ></span>
+  </span>
+</td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p className="text-gray-900 whitespace-no-wrap font-semibold">
+                    {order.orderStatus}
+                  </p>
+                </td>
 
-            </div>
-          </div>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p className="text-gray-900 whitespace-no-wrap font-semibold">
+                    {order.phoneNumber}
+                  </p>
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p className="text-gray-900 whitespace-no-wrap font-semibold">
+                    {order.shippingAddress}
+                  </p>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 
         </CardBody>

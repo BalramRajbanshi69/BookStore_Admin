@@ -9,6 +9,7 @@ import {
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn } from "./pages/auth";
 import SingleBook from "./pages/single/SingleBook";
+import SingleOrder from "./pages/single/SingleOrder";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -43,10 +44,15 @@ export const routes = [
         element: <Notifications />,
       },
       {
-        // icon: <InformationCircleIcon {...icon} />,
-        name: "Books",
+        // name: "Books",
         path: "/books/:id",
         element: <SingleBook />,
+      },
+
+      {
+        // name: "Orders",  
+        path: "/orders/:id",
+        element: <SingleOrder />,
       },
     ],
   },

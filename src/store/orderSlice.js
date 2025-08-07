@@ -83,7 +83,7 @@ export function orderDelete(orderId){
            dispatch(deleteOrderById({orderId}))              // be aware of same name 
             dispatch(setStatus(STATUSES.SUCCESS));
            
-        } catch (error) {
+        } catch (error) {a
             console.log(error);
             dispatch(setStatus(STATUSES.ERROR));
             

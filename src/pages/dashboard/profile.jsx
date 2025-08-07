@@ -83,7 +83,7 @@ export function Profile() {
         return (
           <tr key={user._id}>
             <td className="py-4 px-4 border-b border-gray-200 text-center">{index + 1}</td>
-            <td className="py-4 px-4 border-b border-gray-200 truncate">{user._id}</td>
+            <td className="py-4 px-4 border-b border-gray-200 truncate font-semibold">{user._id}</td>
             <td className="py-4 px-4 border-b border-gray-200">{user.username}</td>
             <td className="py-4 px-4 border-b border-gray-200 truncate">{user.email}</td>
             <td className="py-4 px-4 border-b border-gray-200 whitespace-nowrap">{user.phone}</td>

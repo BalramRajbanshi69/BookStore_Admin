@@ -9,9 +9,11 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrder, orderDelete } from "@/store/orderSlice";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export function Notifications() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const {orders} = useSelector((state)=>state.orders)
   console.log("orders",orders);
   const [searchTerm,setSearchTerm] = useState("")
@@ -129,8 +131,18 @@ export function Notifications() {
                       return (
                         <tr key={order._id}>
                           <td className="py-4 px-4 border-b border-gray-200 text-center">{index + 1}</td>
-                          <td className="py-4 px-4 border-b border-gray-200 truncate">{order?.user?.username}</td>
-                          <td className="py-4 px-4 border-b border-gray-200">{order?._id}</td>
+                          <td className="py-4 px-4 border-b border-gray-200 truncate font-semibold">{order?.user?.username}</td>
+                          <td
+  className="py-4 px-4 border-b border-gray-200  truncate cursor-pointer relative overflow-hidden group"
+  onClick={() => navigate(`/dashboard/orders/${order?._id}`)}
+>
+  <span className="relative inline-block font-semibold">
+    {order?._id}
+    <span 
+      className="absolute w-full bottom-[-2px] left-0 h-[1.5px] bg-gray-900 transform scale-x-0 transition-transform duration-500 ease-in-out  group-hover:scale-x-100"
+    ></span>
+  </span>
+</td>
                        
                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <span
