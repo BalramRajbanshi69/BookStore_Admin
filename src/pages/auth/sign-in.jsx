@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import SignPattern from "../../../img/pattern.png"
 
 
 export function SignIn() {
@@ -94,20 +95,29 @@ export function SignIn() {
           <Button type="submit" className="mt-6" fullWidth>
             Sign In
           </Button>
-
-          <Typography variant="paragraph" className="text-center text-blue-gray-500 font-medium mt-4">
-            Not registered?
-            <Link to="/auth/sign-up" className="text-gray-900 ml-1">Create account</Link>
-          </Typography>
         </form>
+
+        <div className="bg-gray-200 mx-auto w-80 max-w-screen-lg items-center justify-center flex flex-col lg:w-1/2 h-auto p-4 rounded-3xl mt-4">
+          <Typography variant="h6" className="text-black underline">
+            For Admin Login:
+          </Typography>
+          <Typography variant="paragraph" className="text-black">
+            **Email** : <span className="font-semibold">admin@gmail.com</span>
+          </Typography>
+          <Typography variant="paragraph" className="text-black">
+            **Password** : <span className="font-semibold">admin</span>
+          </Typography>
+        </div>
 
       </div>
       <div className="w-2/5 h-full hidden lg:block">
         <img
-          src="/img/pattern.png"
+          src={SignPattern}
           className="h-full w-full object-cover rounded-3xl"
         />
       </div>
+
+      
 
     </section>
   );
