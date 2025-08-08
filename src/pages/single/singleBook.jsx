@@ -192,12 +192,6 @@ const SingleBook = () => {
             orders.length > 0 &&
             orders.map((order, index) => (
               <tr key={order._id}>
-                {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-[#540b0e] whitespace-no-wrap font-bold hover:cursor-pointer hover:underline">
-                    {order._id}
-                  </p>
-                </td> */}
-
                <td
   className="py-4 px-4 border-b border-gray-200  truncate cursor-pointer relative overflow-hidden group"
   onClick={() => navigate(`/dashboard/orders/${order?._id}`)}
@@ -210,9 +204,19 @@ const SingleBook = () => {
   </span>
 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p className="text-gray-900 whitespace-no-wrap font-semibold">
-                    {order.orderStatus}
-                  </p>
+                  <span
+                            className={`relative inline-block px-3 py-1 font-semibold leading-tight rounded-full
+                                  ${
+                                    order.orderStatus === "pending"
+                                      ? "text-red-900 bg-red-200"
+                                      : "text-green-900 bg-green-200"
+                                  }
+                                `}
+                          >
+                            <span className="relative">
+                              {order.orderStatus}
+                            </span>
+                          </span>
                 </td>
 
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
