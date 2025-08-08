@@ -175,7 +175,7 @@ export function Notifications() {
                             </span>
                           </span>
                         </td>
-                         <td className="py-4 px-4 border-b border-gray-200 whitespace-nowrap">{order?.totalAmount}</td>
+                         <td className="py-4 px-4 border-b border-gray-200 whitespace-nowrap">{order?.totalAmount.toFixed(2)}</td>
                          <td className="py-4 px-4 border-b border-gray-200 whitespace-nowrap">{new Date(order.createdAt).toLocaleDateString()}</td>
                           <td className="py-4 px-4 border-b border-gray-200 text-center flex items-center cursor-pointer justify-center" onClick={()=>handleOrderDelete(order?._id)} >
                           <FaTrashAlt size={20} color="red" />
