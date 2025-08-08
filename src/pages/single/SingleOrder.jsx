@@ -159,7 +159,7 @@ const SingleOrder = () => {
               </div>
               <div className="flex justify-between items-center w-full">
                 <p className="text-base dark:text-white font-semibold leading-4 text-gray-800">Grand Total</p>
-                <p className="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">{filteredOrder?.totalAmount}</p>
+                <p className="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">{filteredOrder?.totalAmount.toFixed(2)}</p>
               </div>
             </div>
             <div className="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-200 dark:bg-gray-800 space-y-6">
